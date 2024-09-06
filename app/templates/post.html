@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}New Post{% endblock %}
+{% block content %}
+    <h1>Create a New Post</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}
+        </div>
+        <div>
+            {{ form.content.label }}<br>
+            {{ form.content(rows=10) }}
+        </div>
+        <div>
+            {{ form.image.label }}<br>
+            {{ form.image() }}
+        </div>
+        <div>
+            {{ form.audio.label }}<br>
+            {{ form.audio() }}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

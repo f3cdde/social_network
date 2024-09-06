@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1>Posts</h1>
+    {% for post in posts %}
+        <article>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            {% if post.image_file %}
+                <img src="{{ url_for('static', filename='post_pics/' ~ post.image_file) }}" alt="Post Image">
+            {% endif %}
+            {% if post.audio_file %}
+                <audio controls>
+                    <source src="{{ url_for('static', filename='post_audios/' ~ post.audio_file) }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            {% endif %}
+            <small>Posted by {{ post.author.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            {% if post.author == current_user %}
+                <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            {% endif %}
+        </article>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=word_formatter.settings
+    volumes:
+      - .:/app
+    entrypoint: >
+      sh -c "python manage.py migrate &&
+             gunicorn -b 0.0.0.0:8000 word_formatter.wsgi:application"
