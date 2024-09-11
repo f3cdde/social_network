@@ -1,14 +1,16 @@
+# Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde)
+
 version: '3.8'
 
 services:
   web:
     build: .
     ports:
-      - "8000:8000"
+      - "8000:8000"  # Mapeia a porta 8000 do host para a porta 8000 do container
     environment:
-      - DJANGO_SETTINGS_MODULE=word_formatter.settings
+      - DJANGO_SETTINGS_MODULE=word_formatter.settings  # Define a variável de ambiente para as configurações do Django
     volumes:
-      - .:/app
+      - .:/app  # Monta o diretório atual no diretório /app do container
     entrypoint: >
       sh -c "python manage.py migrate &&
-             gunicorn -b 0.0.0.0:8000 word_formatter.wsgi:application"
+             gunicorn -b 0.0.0.0:8000 word_formatter.wsgi:application"  # Comando de entrada para migrar o banco de dados e iniciar o servidor Gunicorn

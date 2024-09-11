@@ -1,25 +1,46 @@
+<!-- Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde) -->
+
 {% extends "base.html" %}
+
 {% block title %}New Post{% endblock %}
+
 {% block content %}
     <h1>Create a New Post</h1>
+    <!-- Formulário para criação de um novo post -->
     <form method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
+
+        <!-- Campo de título do post -->
         <div>
             {{ form.title.label }}<br>
             {{ form.title(size=32) }}
         </div>
+
+        <!-- Campo de conteúdo do post -->
         <div>
             {{ form.content.label }}<br>
             {{ form.content(rows=10) }}
         </div>
+
+        <!-- Campo para upload de imagem -->
         <div>
             {{ form.image.label }}<br>
             {{ form.image() }}
         </div>
+
+        <!-- Campo para upload de áudio -->
         <div>
             {{ form.audio.label }}<br>
             {{ form.audio() }}
         </div>
+
+        <!-- Campo para upload de vídeo -->
+        <div>
+            {{ form.video.label }}<br>
+            {{ form.video() }}
+        </div>
+
+        <!-- Botão de envio do formulário -->
         <div>
             {{ form.submit() }}
         </div>

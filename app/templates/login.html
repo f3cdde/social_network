@@ -1,23 +1,36 @@
+<!-- Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde) -->
+
 {% extends "base.html" %}
+
 {% block title %}Login{% endblock %}
+
 {% block content %}
     <h1>Login</h1>
+    <!-- Formulário de login -->
     <form method="POST" action="">
         {{ form.hidden_tag() }}
+
+        <!-- Campo de email -->
         <div>
             {{ form.email.label }}<br>
             {{ form.email(size=32) }}<br>
+            <!-- Exibição de erros de validação para o campo de email -->
             {% for error in form.email.errors %}
                 <span>{{ error }}</span>
             {% endfor %}
         </div>
+
+        <!-- Campo de senha -->
         <div>
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}<br>
+            <!-- Exibição de erros de validação para o campo de senha -->
             {% for error in form.password.errors %}
                 <span>{{ error }}</span>
             {% endfor %}
         </div>
+
+        <!-- Botão de envio do formulário -->
         <div>
             {{ form.submit() }}
         </div>

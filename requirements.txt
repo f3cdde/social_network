@@ -1,3 +1,5 @@
+# Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde)
+
 Flask==2.0.2
 Flask-SQLAlchemy==2.5.1
 Flask-Bcrypt==0.7.1

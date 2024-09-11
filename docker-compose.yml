@@ -1,11 +1,11 @@
+# Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde)
+
 version: '3.8'
 
 services:
   web:
     build: .
     ports:
-      - "5000:5000"
+      - "5000:5000"  # Mapeia a porta 5000 do host para a porta 5000 do container
     environment:
       - SECRET_KEY=${SECRET_KEY}
-    volumes:
-      - .:/app

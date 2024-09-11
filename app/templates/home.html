@@ -1,21 +1,41 @@
+<!-- Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde) -->
+
 {% extends "base.html" %}
+
 {% block title %}Home{% endblock %}
+
 {% block content %}
     <h1>Posts</h1>
     {% for post in posts %}
         <article>
             <h2>{{ post.title }}</h2>
             <p>{{ post.content }}</p>
+
+            <!-- Exibe a imagem do post, se houver -->
             {% if post.image_file %}
                 <img src="{{ url_for('static', filename='post_pics/' ~ post.image_file) }}" alt="Post Image">
             {% endif %}
+
+            <!-- Exibe o áudio do post, se houver -->
             {% if post.audio_file %}
                 <audio controls>
                     <source src="{{ url_for('static', filename='post_audios/' ~ post.audio_file) }}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             {% endif %}
+
+            <!-- Exibe o vídeo do post, se houver -->
+            {% if post.video_file %}
+                <video controls>
+                    <source src="{{ url_for('static', filename='post_videos/' ~ post.video_file) }}" type="video/mp4">
+                    Your browser does not support the video element.
+                </video>
+            {% endif %}
+
+            <!-- Informações do autor e data do post -->
             <small>Posted by {{ post.author.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+
+            <!-- Botão de deletar post, visível apenas para o autor do post -->
             {% if post.author == current_user %}
                 <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
                     <button type="submit">Delete</button>

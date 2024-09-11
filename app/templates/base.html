@@ -1,23 +1,30 @@
+<!-- Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde) -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %} - Social Network</title>
+    <!-- Link para o arquivo CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <!-- Barra de navegação -->
     <nav class="navbar">
         <a href="{{ url_for('home') }}">Home</a>
         {% if current_user.is_authenticated %}
+            <!-- Links visíveis apenas para usuários autenticados -->
             <a href="{{ url_for('new_post') }}">New Post</a>
             <a href="{{ url_for('logout') }}">Logout</a>
         {% else %}
+            <!-- Links visíveis apenas para usuários não autenticados -->
             <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('register') }}">Register</a>
         {% endif %}
     </nav>
     <div class="container">
+        <!-- Exibição de mensagens flash -->
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -25,6 +32,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+        <!-- Bloco de conteúdo dinâmico -->
         {% block content %}{% endblock %}
     </div>
 </body>

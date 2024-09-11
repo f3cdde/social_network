@@ -1,6 +1,6 @@
 # Social Network
 
-Esta é uma rede social simples desenvolvida em Python, Flask e Docker. A aplicação permite registro e login de usuários, criação e exclusão de posts, e upload de imagens.
+Esta é uma rede social simples desenvolvida em Python, Flask e Docker. A aplicação permite registro e login de usuários, criação e exclusão de posts, e upload de imagens, vídeos e áudios.
 
 ## Estrutura do Projeto
 
@@ -18,6 +18,9 @@ social_network/
 │   │   ├── register.html
 │   │   ├── post.html
 │   ├── static/
+│   │   ├── post_pics/
+│   │   ├── post_videos/
+│   │   ├── post_audios/
 │   │   ├── styles.css
 ├── Dockerfile
 ├── docker-compose.yml
@@ -25,7 +28,6 @@ social_network/
 ├── .env
 ├── .gitignore
 └── README.md
-
 
 ## Dependências
 
@@ -57,15 +59,6 @@ social_network/
 
 Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-### Arquivo `run.py`
-
-#### Código (`run.py`)
-
-from app import app
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-
 ## Passos para Garantir que o Projeto está Funcional
 
 1. Clone o repositório: Certifique-se de que você pode clonar o repositório do GitHub.
@@ -78,3 +71,7 @@ if __name__ == '__main__':
 docker-compose up --build
 
 5. Acesse a aplicação no navegador: Acesse a aplicação no navegador em http://localhost:5000.
+
+## Créditos
+
+Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde)

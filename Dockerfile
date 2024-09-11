@@ -1,3 +1,5 @@
+# Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde)
+
 # Use uma imagem base oficial do Python
 FROM python:3.8-slim
 
