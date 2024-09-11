@@ -3,3 +3,6 @@ __pycache__/
 instance/
 .env
 site.db
+app/static/post_audios
+app/static/post_pics
+app/static/post_videos
