@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+    <h1>Edit Profile</h1>
+    <!-- Formulário para editar o perfil do usuário -->
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <!-- Campo de nome de usuário -->
+        <div>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            <!-- Exibição de erros de validação para o campo de nome de usuário -->
+            {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Campo de descrição "Sobre mim" -->
+        <div>
+            {{ form.about_me.label }}<br>
+            {{ form.about_me(rows=5) }}<br>
+            <!-- Exibição de erros de validação para o campo de descrição -->
+            {% for error in form.about_me.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Botão de envio do formulário -->
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

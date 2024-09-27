@@ -1,6 +1,6 @@
 # Social Network
 
-Esta é uma rede social simples desenvolvida em Python, Flask e Docker. A aplicação permite registro e login de usuários, criação e exclusão de posts, e upload de imagens, vídeos e áudios.
+Esta é uma rede social simples desenvolvida em Python, Flask e Docker. A aplicação permite registro e login de usuários, criação e exclusão de posts, curtidas e comentários, solicitações de amizade, notificações, envio de mensagens, feed includindo amigos, upload de imagens, vídeos e áudios.
 
 ## Estrutura do Projeto
 
@@ -9,21 +9,38 @@ social_network/
 ├── app/
 │   ├── __init__.py
 │   ├── models.py
+│   ├── config.py
 │   ├── routes.py
+│   ├── flask_brypt.py
+│   ├── context_processors.py
+│   ├── utils.py
+│   ├── site.db
 │   ├── forms.py
 │   ├── templates/
 │   │   ├── base.html
 │   │   ├── home.html
+│   │   ├── edit_profile.html
+│   │   ├── friends.html
+│   │   ├── friends_request.html
+│   │   ├── notifications.html
 │   │   ├── login.html
 │   │   ├── register.html
 │   │   ├── post.html
+│   │   ├── messages.html
+│   │   ├── send_friend_request.html
+│   │   ├── send_message.html
+│   │   ├── user_profile.html
 │   ├── static/
 │   │   ├── post_pics/
 │   │   ├── post_videos/
 │   │   ├── post_audios/
 │   │   ├── styles.css
+│   │   ├── script.js
 ├── Dockerfile
 ├── docker-compose.yml
+├── docker-file.yml
+├── manage.py
+├── run.py
 ├── requirements.txt
 ├── .env
 ├── .gitignore
@@ -31,11 +48,22 @@ social_network/
 
 ## Dependências
 
+# Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde)
+
 - Flask
 - Flask-SQLAlchemy
 - Flask-Bcrypt
 - Flask-Login
 - python-dotenv
+- Werkzeug
+- SQLAlchemy
+- Flask-WTF
+- Jinja2
+- email-validator
+- Flask-Uploads
+- Pillow
+- Flask-Migrate
+- moviepy
 
 ## Configuração do Ambiente
 

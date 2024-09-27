@@ -1,11 +1,14 @@
-# Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde)
-
 version: '3.8'
 
 services:
   web:
     build: .
     ports:
-      - "5000:5000"  # Mapeia a porta 5000 do host para a porta 5000 do container
+      - "5000:5000"
     environment:
       - SECRET_KEY=${SECRET_KEY}
+    command: python run.py
+    volumes:
+      - ./app/app/:/app/site.db  # Altere para apontar para a localização correta do arquivo
+    #volumes:
+    #  - ./app/temp_db:/app/site.db

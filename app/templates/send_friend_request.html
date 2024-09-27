@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Send Friend Request{% endblock %}
+
+{% block content %}
+    <h1>Send Friend Request</h1>
+    <!-- Formulário para enviar um pedido de amizade -->
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <!-- Campo de nome de usuário do destinatário -->
+        <div>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            <!-- Exibição de erros de validação para o campo de nome de usuário -->
+            {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- Botão de envio do formulário -->
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

@@ -36,20 +36,19 @@ class Bcrypt:
         """
         app.extensions['bcrypt'] = self
 
-    def generate_password_hash(self, password, rounds=None):
+    def check_password_hash(self, pw_hash, password):
         """
-        Gera um hash para a senha fornecida.
+        Verifica se a senha fornecida corresponde ao hash armazenado.
 
         Args:
-            password (str): Senha a ser hasheada.
-            rounds (int): Número de rounds para o algoritmo de hash (opcional).
+            pw_hash (str): Hash armazenado da senha.
+            password (str): Senha fornecida para verificação.
 
         Returns:
-            str: Hash da senha.
+            bool: True se a senha corresponder ao hash, False caso contrário.
         """
-        if rounds is None:
-            rounds = current_app.config.get('BCRYPT_LOG_ROUNDS', 12)
-        return generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
+        return check_password_hash(pw_hash, password)
+
 
     def check_password_hash(self, pw_hash, password):
         """

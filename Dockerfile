@@ -14,9 +14,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copie o restante do código do projeto para o diretório de trabalho
 COPY . .
+#COPY ./app/site.db /app/site.db
 
 # Exponha a porta 5000
 EXPOSE 5000
 
 # Comando para iniciar o servidor
-CMD ["python", "run.py"]
+ CMD ["python", "run.py"]
+

@@ -85,3 +85,41 @@ class PostForm(FlaskForm):
     audio = FileField('Post Audio', validators=[FileAllowed(['mp3', 'wav'])])
     video = FileField('Post Video', validators=[FileAllowed(['mp4', 'avi'])])
     submit = SubmitField('Post')
+
+class MessageForm(FlaskForm):
+    """
+    Formulário para enviar mensagens diretas.
+
+    Campos:
+        body (TextAreaField): Conteúdo da mensagem, deve ter entre 1 e 500 caracteres.
+        submit (SubmitField): Botão para enviar a mensagem.
+    """
+    body = TextAreaField('Message', validators=[DataRequired(), Length(min=1, max=500)])
+    submit = SubmitField('Send')
+
+class ProfileForm(FlaskForm):
+    """
+    Formulário para editar o perfil do usuário.
+
+    Campos:
+        username (StringField): Nome de usuário, deve ter entre 2 e 20 caracteres.
+        about_me (TextAreaField): Descrição do usuário, deve ter no máximo 500 caracteres.
+        submit (SubmitField): Botão para enviar o formulário.
+    """
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    about_me = TextAreaField('About Me', validators=[Length(max=500)])
+    submit = SubmitField('Update')
+
+class FriendRequestForm(FlaskForm):
+    """
+    Formulário para enviar pedidos de amizade.
+
+    Campos:
+        username (StringField): Nome de usuário do destinatário.
+        submit (SubmitField): Botão para enviar o pedido de amizade.
+    """
+    # Campo para o nome de usuário do destinatário do pedido de amizade
+    username = StringField('Username', validators=[DataRequired()])
+
+    # Botão para enviar o pedido de amizade
+    submit = SubmitField('Send Friend Request')

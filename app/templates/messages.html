@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+    <h1>Messages</h1>
+
+    <h2>Send a Message</h2>
+    <!-- Formulário para enviar uma nova mensagem -->
+    <form method="POST">
+        <select name="recipient" required>
+            <option value="" disabled {% if not selected_recipient %}selected{% endif %}>Select a recipient</option>
+            {% for friend in friends %}
+                <option value="{{ friend.username }}" {% if friend.username == selected_recipient %}selected{% endif %}>
+                    {{ friend.username }}
+                </option>
+            {% endfor %}
+        </select>
+        <textarea name="body" placeholder="Type your message here..." required></textarea>
+        <button type="submit">Send</button>
+    </form>
+
+    <h2>Sent Messages</h2>
+    <!-- Lista de mensagens enviadas -->
+    {% for message in sent_messages %}
+    <div>
+        <strong>To: {{ message.recipient.username }}</strong>
+        <p>{{ message.body }}</p>
+    </div>
+    {% endfor %}
+
+    <h2>Received Messages</h2>
+    <!-- Lista de mensagens recebidas -->
+    {% for message in received_messages %}
+    <div>
+        <strong>From: {{ message.sender.username }}</strong>
+        <p>{{ message.body }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}

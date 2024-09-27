@@ -1,5 +1,3 @@
-<!-- Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde) -->
-
 {% extends "base.html" %}
 
 {% block title %}Home{% endblock %}
@@ -11,36 +9,62 @@
             <h2>{{ post.title }}</h2>
             <p>{{ post.content }}</p>
 
-            <!-- Exibe a imagem do post, se houver -->
             {% if post.image_file %}
-                <img src="{{ url_for('static', filename='post_pics/' ~ post.image_file) }}" alt="Post Image">
+                <img src="{{ url_for('static', filename='post_pics/' ~ post.image_file) }}" class="post-img" alt="Post Image">
             {% endif %}
-
-            <!-- Exibe o áudio do post, se houver -->
+            
             {% if post.audio_file %}
                 <audio controls>
-                    <source src="{{ url_for('static', filename='post_audios/' ~ post.audio_file) }}" type="audio/mpeg">
+                    <source src="{{ url_for('static', filename='post_audios/' ~ post.audio_file) }}" class="post-audio" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             {% endif %}
-
-            <!-- Exibe o vídeo do post, se houver -->
+            
             {% if post.video_file %}
-                <video controls>
-                    <source src="{{ url_for('static', filename='post_videos/' ~ post.video_file) }}" type="video/mp4">
+                <video controls class="post-video">
+                    <source src="{{ url_for('static', filename='post_videos/' ~ post.video_file) }}" class="post-video" type="video/mp4">
                     Your browser does not support the video element.
                 </video>
             {% endif %}
-
-            <!-- Informações do autor e data do post -->
+            
             <small>Posted by {{ post.author.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
 
-            <!-- Botão de deletar post, visível apenas para o autor do post -->
-            {% if post.author == current_user %}
-                <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
-                    <button type="submit">Delete</button>
-                </form>
-            {% endif %}
+            <!-- Botões de curtir e deletar -->
+            <div class="button-container">
+                <button class="button-like" data-post-id="{{ post.id }}">
+                    {% if post.likes_count > 0 %}
+                        <span class="heart-filled">&#10084;</span> <!-- Coração preenchido -->
+                    {% else %}
+                        <span class="heart-empty">&#9825;</span> <!-- Coração vazio -->
+                    {% endif %}
+                </button>
+                <span class="likes-count" id="like-count-{{ post.id }}">{{ post.likes_count }}</span>
+
+                {% if post.author == current_user %}
+                    <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" class="delete-form">
+                        <button type="submit" class="button-delete">Delete</button>
+                    </form>
+                {% endif %}
+            </div>
+
+
+            <h4>Comments:</h4>
+            <form action="{{ url_for('comment_post', post_id=post.id) }}" method="POST" class="comment-form">
+                <textarea name="body" required placeholder="Write your comment here..." class="comment-textarea"></textarea>
+                <button type="submit" class="comment-button">Send</button>
+            </form>
+                        
+            <div class="comments">
+                {% for comment in post.comments %}
+                    <p><strong>{{ comment.user.username }}:</strong> {{ comment.body }}</p>
+                {% else %}
+                    <p>No comments yet.</p>
+                {% endfor %}
+            </div>
         </article>
+        <hr>
     {% endfor %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}
+
+<script></script>

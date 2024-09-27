@@ -40,4 +40,83 @@ body {
     padding: 20px; /* Adiciona espaçamento interno */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra ao redor do contêiner */
     background-color: #fff; /* Define a cor de fundo do contêiner */
+    overflow: hidden; /* Isso garante que o conteúdo não escape do container */
+}
+
+/* CSS para redimensionar imagens e vídeos */
+.post-img {
+    max-width: 100%; /* Limita a largura máxima ao tamanho do container */
+    height: auto;    /* Mantém a proporção */
+    position: center;
+}
+
+.post-video {
+    max-width: 100%; /* Limita a largura máxima ao tamanho do container */
+    height: auto;    /* Mantém a proporção */
+    position: center;
+}
+
+.post-audio {
+    max-width: 100%; /* Limita a largura máxima ao tamanho do container */
+    height: auto;    /* Mantém a proporção */
+    position: center;
+}
+
+.notification-count {
+    background-color: red; /* Cor de fundo do contador */
+    color: white; /* Cor do texto */
+    border-radius: 50%; /* Formato redondo */
+    padding: 5px 10px; /* Espaçamento interno */
+    position: absolute; /* Para posicionamento em relação ao ícone */
+    top: 0; /* Alinhar ao topo */
+    right: 0; /* Alinhar à direita */
+    font-size: 12px; /* Tamanho da fonte */
+}
+
+/* Botões */
+.button-container {
+    display: flex;
+    align-items: center; /* Alinha os itens no centro verticalmente */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    margin-top: 10px; /* Espaço acima do botão */
+}
+
+.button-like, .button-delete, .comment-button {
+    background-color: transparent; /* Fundo transparente */
+    border: none; /* Remove a borda */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+}
+
+.button-like:hover, .comment-button:hover {
+    color: white; /* Mantém a cor branca ao passar o mouse */
+}
+
+.comment-button {
+    background-color: #333; /* Cor de fundo do botão Send */
+    color: white; /* Cor do texto do botão Send */
+}
+
+.button-delete {
+    background-color: transparent; /* Fundo transparente */
+    color: #b22222; /* Cor da fonte vermelha */
+    padding: 5px 10px; /* Espaçamento do botão delete */
+    margin-left: 10px; /* Espaçamento entre like e delete */
+}
+
+.button-delete:hover {
+    background-color: white; /* Fundo branco ao passar o mouse */
+    color: #b22222; /* Cor da fonte permanece vermelha */
+    border: 1px solid #b22222; /* Borda vermelha ao passar o mouse */
+}
+
+.likes-count {
+    margin-left: 5px; /* Espaço entre o coração e a contagem de likes */
+}
+
+/* Centralizar a frase "Posted by ..." */
+small {
+    display: block; /* Cada frase ocupa uma nova linha */
+    text-align: center; /* Centraliza o texto */
+    margin-top: 5px; /* Espaço acima da frase */
 }

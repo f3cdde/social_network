@@ -23,7 +23,7 @@
         <!-- Campo de senha -->
         <div>
             {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
+            {{ form.password(size=32, autocomplete="current-password") }}<br>
             <!-- Exibição de erros de validação para o campo de senha -->
             {% for error in form.password.errors %}
                 <span>{{ error }}</span>
