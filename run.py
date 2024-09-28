@@ -1,3 +1,7 @@
+"""
+Desenvolvido por (Developed by / 開發者) Felipe Ferreira (f3cdde)
+"""
+
 from app import app, db
 from flask_migrate import Migrate
 from app import app, db  # Certifique-se de que você está importando seu app e banco de dados
